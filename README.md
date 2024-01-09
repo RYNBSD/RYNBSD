@@ -29,7 +29,7 @@
 <mark>React Native (Expo)</mark>
 <br>
 
-### Backend (server)
+### 👨‍💻 Backend (server)
 
 <img align="left" alt="Express" width="30" height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
 <img align="left" alt="Sequelize" width="30" height="30" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" />
