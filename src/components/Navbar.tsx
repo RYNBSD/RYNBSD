@@ -42,12 +42,12 @@ type NavLinkProps = {
 
 const BUTTON: NavButtonProps[] = [
   {
-    link: "",
+    link: "/resume.pdf",
     content: "Resume",
     Icon: MdOutlineFileDownload,
   },
   {
-    link: "",
+    link: "/certifications.pdf",
     content: "Certification",
     Icon: MdOutlineFileDownload,
   },
@@ -57,6 +57,7 @@ function NavButton({ link, content, Icon }: NavButtonProps) {
   return (
     <Link
       className="flex items-center gap-2 px-2 md:px-5 py-1 md:py-3 bg-black rounded text-white text-base sm:text-sm md:text-xl font-semibold leading-normal tracking-tight"
+      target="_blank"
       href={link}
     >
       {content} <Icon color="#fff" />
@@ -72,7 +73,7 @@ type NavButtonProps = {
 
 export default async function Navbar() {
   return (
-    <nav className="container mx-auto flex items-center justify-between p-5">
+    <nav className="container mx-auto flex gap-5 items-center justify-between p-5">
       <div className="flex-1 xl:flex-[0.25]">
         <h1 className="font-bold text-3xl leading-normal">RYNBSD</h1>
       </div>

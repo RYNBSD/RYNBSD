@@ -1,34 +1,36 @@
+"use server";
 import { SECTIONS, SOCIAL } from "~/constant";
-import Icon from "./global/Icon";
+import Icon from "../global/Icon";
+import SubmitBtn from "./submit-btn";
 import nodemailer from "nodemailer";
 
+async function action(formData: FormData) {
+  "use server";
+  const transport = nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+  });
+
+  const text = ((formData.get("email") as string) +
+    " " +
+    formData.get("description")) as string;
+
+  await transport.sendMail({
+    to: process.env.EMAIL_USER,
+    from: formData.get("email") as string,
+    subject: formData.get("subject") as string,
+    text,
+  });
+  transport.close();
+}
+
 export default async function Contact() {
-  async function action(formData: FormData) {
-    "use server";
-    const transport = nodemailer.createTransport({
-      service: "gmail",
-      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-    });
-
-    const text = ((formData.get("email") as string) +
-      " " +
-      formData.get("description")) as string;
-
-    await transport.sendMail({
-      to: process.env.EMAIL_USER,
-      from: formData.get("email") as string,
-      subject: formData.get("subject") as string,
-      text,
-    });
-    transport.close();
-  }
-
   return (
     <section
       id={SECTIONS.CONTACT_ME}
       className="container mx-auto flex flex-col items-center md:flex-row md:gap-20 gap-5 my-5 px-5"
     >
-      <form className="flex-1 w-full flex flex-col gap-5" action={action}>
+      <form className="flex-1 w-full flex flex-col gap-5">
         <input
           className="px-6 py-4 rounded border border-black text-zinc-500 leading-tight"
           type="email"
@@ -52,12 +54,7 @@ export default async function Contact() {
         ></textarea>
         <div className="flex flex-col xl:flex-row gap-4">
           <div>
-            <button
-              className="px-5 py-3 bg-black rounded text-white text-xl font-semibold leading-normal tracking-tight"
-              type="submit"
-            >
-              Get In Touch
-            </button>
+            <SubmitBtn content="Get In Touch" action={action} />
           </div>
           <div className="flex gap-4">
             {SOCIAL.map((social) => (

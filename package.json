@@ -1,6 +1,6 @@
 {
-  "name": "web",
-  "version": "0.1.0",
+  "name": "portfolio",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=\"development\" next dev",

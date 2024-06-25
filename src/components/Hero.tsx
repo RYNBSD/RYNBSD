@@ -12,9 +12,8 @@ export default async function Hero() {
           width={1280}
           height={720}
           priority
-          className="w-full h-full relative object-contain before:content-[''] before:absolute before:bg-black before:rounded before:w-full before:h-full before:left-0 before:bottom-0 before:z-10"
+          className="w-full h-full relative object-contain"
         />
-        {/* <div className="absolute bg-black rounded w-full h-1 left-0 bottom-0 z-10" /> */}
       </div>
       <div className="flex-1 flex flex-col gap-5 justify-center items-start">
         <h1 className="text-black text-[28px] md:text-5xl font-normal leading-[1.25] md:leading-[56px]">
