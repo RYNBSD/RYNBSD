@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { motion } from "~/lib";
 
 const EXPERIENCE: ExperienceProps[] = [
   {
@@ -27,7 +28,7 @@ function Experience({
   endAt,
 }: ExperienceProps) {
   return (
-    <div className="flex flex-col gap-7 rounded-[10px] border border-zinc-500 px-6 py-[30px] transition hover:bg-zinc-800">
+    <motion.FadeIn className="flex flex-col gap-7 rounded-[10px] border border-zinc-500 px-6 py-[30px] transition hover:bg-zinc-800">
       <div className="flex justify-between flex-wrap items-center">
         <div className="flex gap-3 items-center">
           <Image
@@ -48,7 +49,7 @@ function Experience({
       <p className="text-zinc-300 leading-normal tracking-tight">
         {description}
       </p>
-    </div>
+    </motion.FadeIn>
   );
 }
 

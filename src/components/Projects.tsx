@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { motion } from "~/lib";
 import { SECTIONS } from "~/constant";
 
 const PROJECT: Omit<ProjectProps, "index">[] = [
@@ -27,23 +28,37 @@ function Project({ index, image, title, description, link }: ProjectProps) {
         index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
       } md:gap-20 gap-5 w-full items-center`}
     >
-      <div className="flex-1 w-full">
-        <Image
-          src={image}
-          alt={title}
-          width={1280}
-          height={720}
-          className="object-cover h-96 rounded-xl"
-        />
-      </div>
+      {index % 2 !== 0 ? (
+        <motion.FadeLeft className="flex-1 w-full">
+          <Image
+            src={image}
+            alt={title}
+            width={1280}
+            height={720}
+            className="object-cover h-96 rounded-xl"
+          />
+        </motion.FadeLeft>
+      ) : (
+        <motion.FadeRight className="flex-1 w-full">
+          <Image
+            src={image}
+            alt={title}
+            width={1280}
+            height={720}
+            className="object-cover h-96 rounded-xl"
+          />
+        </motion.FadeRight>
+      )}
+
       <div className="flex-1 flex flex-col gap-7">
         <h1 className="text-white text-5xl font-extrabold leading-[56px]">
           {index > 9 ? index : `0${index}`}
         </h1>
         <h1 className="text-white text-[32px] font-bold leading-10">{title}</h1>
-        <p className="text-zinc-500 leading-normal tracking-tight">
-          {description}
-        </p>
+        <motion.Paragraph
+          className="text-zinc-500 leading-normal tracking-tight"
+          paragraph={description}
+        />
         <Link target="_blank" href={link}>
           <FaExternalLinkAlt color="#fff" size={20} />
         </Link>

@@ -1,8 +1,9 @@
 "use server";
+import nodemailer from "nodemailer";
+import { motion } from "~/lib";
 import { SECTIONS, SOCIAL } from "~/constant";
 import Icon from "../global/Icon";
 import SubmitBtn from "./submit-btn";
-import nodemailer from "nodemailer";
 
 async function action(formData: FormData) {
   "use server";
@@ -68,12 +69,14 @@ export default async function Contact() {
           Let&apos;s <span className="font-normal">talk</span> for something
           special
         </h1>
-        <p className="text-zinc-500 leading-normal tracking-tight">
-          I&apos;m passionate about building, teaching, and guiding in mobile,
-          web, and server development. Let&apos;s collaborate to turn your ideas
-          into reality—reach out and let&apos;s create something extraordinary
-          together!
-        </p>
+        <motion.Paragraph
+          paragraph="I'm passionate about building, teaching, and guiding in mobile,
+          web, and server development. Let's collaborate to turn your ideas
+          into reality—reach out and let's create something extraordinary
+          together!"
+          className="text-zinc-500 leading-normal tracking-tight"
+        />
+
         <h2 className="font-semibold leading-loose text-[28px]">
           rynbsd04@gmail.com
         </h2>
