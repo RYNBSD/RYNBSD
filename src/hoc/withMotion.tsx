@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, ComponentType, FC } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 type Motion = typeof motion;
 type MotionElements = keyof Motion;
@@ -16,7 +16,11 @@ export default function withMotion<
   >;
 
   return function MotionComponent(fcProps: P) {
-    return (
+    const reduceMotion = useReducedMotion();
+
+    return reduceMotion ? (
+      <Component {...fcProps} />
+    ) : (
       <Element {...motionProps}>
         <Component {...fcProps} />
       </Element>

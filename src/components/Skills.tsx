@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SECTIONS } from "~/constant";
-import { Atropos, motion } from "~/lib";
+import { Atropos } from "~/lib";
+import { Fade } from "~/motion"
 
 const SKILL: SkillProps[] = [
   { image: "/git.webp", name: "Git" },
@@ -18,7 +19,7 @@ const SKILL: SkillProps[] = [
 
 function Skill({ image, name }: SkillProps) {
   return (
-    <motion.FadeIn>
+    <Fade viewport={{ once: true }}>
       <Atropos className="grid place-content-center">
         <div className="flex flex-col w-40 h-40 border-[2px] border-black gap-3 justify-center items-center">
           <Image
@@ -34,7 +35,7 @@ function Skill({ image, name }: SkillProps) {
           </h2>
         </div>
       </Atropos>
-    </motion.FadeIn>
+    </Fade>
   );
 }
 

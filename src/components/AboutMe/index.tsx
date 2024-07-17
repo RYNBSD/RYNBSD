@@ -1,4 +1,4 @@
-import { motion } from "~/lib";
+import { Paragraph } from "~/motion";
 import { SECTIONS } from "~/constant";
 import Avatar from "./Avatar";
 
@@ -38,14 +38,22 @@ export default function AboutMe() {
       className="container mx-auto flex md:gap-20 gap-5 items-center flex-col md:flex-row my-5 px-5"
     >
       <div className="flex-1 gap-10">
-        <Avatar />
+        <svg
+          width="100%"
+          height="572"
+          viewBox="0 0 530 572"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <Avatar />
+        </svg>
       </div>
       <div className="flex-1 flex flex-col gap-3">
         <h1 className="text-5xl leading-[56px] font-extrabold p-5 mb-5">
           <span className="font-normal">About</span> Me
         </h1>
         {paragraphs.map((paragraph) => {
-          return <motion.Paragraph key={paragraph} paragraph={paragraph} />;
+          return <Paragraph key={paragraph} paragraph={paragraph} />;
         })}
       </div>
     </section>

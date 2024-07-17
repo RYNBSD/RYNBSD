@@ -1,11 +1,11 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { ReactNode, ComponentProps } from "react";
 import { Atropos as AtroposReact } from "atropos/react";
 
-export default function Atropos({ children, className }: Props) {
+export default function Atropos({ children, ...props }: Props) {
   return (
-    <AtroposReact shadow={false} className={className}>
+    <AtroposReact shadow={false} {...props}>
       {children}
     </AtroposReact>
   );
@@ -13,5 +13,4 @@ export default function Atropos({ children, className }: Props) {
 
 type Props = {
   children: ReactNode;
-  className?: string;
-};
+} & ComponentProps<typeof AtroposReact>;

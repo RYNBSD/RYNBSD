@@ -1,7 +1,7 @@
 import type { IconType } from "react-icons";
 import Link from "next/link";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { motion } from "~/lib";
+import { FadeTop } from "~/motion";
 import { SECTIONS } from "~/constant";
 
 const LINK: NavLinkProps[] = [
@@ -74,7 +74,7 @@ type NavButtonProps = {
 
 export default async function Navbar() {
   return (
-    <motion.FadeTop>
+    <FadeTop viewport={{ once: true }}>
       <nav className="container mx-auto flex gap-5 items-center justify-between p-5">
         <div className="flex-1 xl:flex-[0.25]">
           <h1 className="font-bold text-3xl leading-normal">RYNBSD</h1>
@@ -94,6 +94,6 @@ export default async function Navbar() {
         <div className="hamburger-menu">asdasdasd</div>
       </div> */}
       </nav>
-    </motion.FadeTop>
+    </FadeTop>
   );
 }

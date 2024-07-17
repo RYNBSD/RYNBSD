@@ -1,8 +1,8 @@
-import { motion } from "~/lib";
+import { FadeBottom } from "~/motion";
 
 export default function Footer() {
   return (
-    <motion.FadeBottom>
+    <FadeBottom viewport={{ once: true }}>
       <footer className="bg-black">
         <div className="container mx-auto py-5">
           <h1 className="text-white text-center font-semibold leading-tight">
@@ -10,6 +10,6 @@ export default function Footer() {
           </h1>
         </div>
       </footer>
-    </motion.FadeBottom>
+    </FadeBottom>
   );
 }

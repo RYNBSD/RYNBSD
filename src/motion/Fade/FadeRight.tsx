@@ -8,28 +8,26 @@ import type {
 } from "react";
 import { forwardRef, useMemo } from "react";
 import { motion, type Variants } from "framer-motion";
-import Fade from "./Fade";
+import Fade from ".";
 
-const FadeTop: ForwardRefRenderFunction<ElementRef<typeof motion.div>, Props> = (
-  { children, startY, duration, ...props },
+const FadeRight: ForwardRefRenderFunction<ElementRef<typeof motion.div>, Props> = (
+  { children, startX, duration, ...props },
   ref
 ) => {
   const variants = useMemo(
     () =>
       ({
         hidden: {
-          opacity: 0,
-          y: startY ?? -50,
+          x: startX ?? 50,
         },
         visible: {
-          opacity: 1,
-          y: 0,
+          x: 0,
           transition: {
             duration,
           },
         },
       } satisfies Variants),
-    [duration, startY]
+    [duration, startX]
   );
 
   return (
@@ -47,11 +45,11 @@ const FadeTop: ForwardRefRenderFunction<ElementRef<typeof motion.div>, Props> = 
 
 type Props = {
   children: ReactNode;
-  startY?: number | `${number}` | string;
+  startX?: number | `${number}` | string;
   duration?: number;
 } & Omit<
   ComponentProps<typeof motion.div>,
   "variants" | "initial" | "whileInView" | "animate"
 >;
 
-export default forwardRef(FadeTop);
+export default forwardRef(FadeRight);

@@ -1,6 +1,6 @@
 "use server";
 import nodemailer from "nodemailer";
-import { motion } from "~/lib";
+import { Paragraph } from "~/motion";
 import { SECTIONS, SOCIAL } from "~/constant";
 import Icon from "../global/Icon";
 import SubmitBtn from "./submit-btn";
@@ -69,7 +69,8 @@ export default async function Contact() {
           Let&apos;s <span className="font-normal">talk</span> for something
           special
         </h1>
-        <motion.Paragraph
+        <Paragraph
+          viewport={{ once: true }}
           paragraph="I'm passionate about building, teaching, and guiding in mobile,
           web, and server development. Let's collaborate to turn your ideas
           into reality—reach out and let's create something extraordinary

@@ -5,25 +5,32 @@ import type {
   ElementRef,
   ForwardRefRenderFunction,
 } from "react";
+import type { motion } from "framer-motion";
 import { forwardRef, useMemo } from "react";
-import { motion } from "framer-motion";
+import { Motion } from "~/lib";
 import Span from "./Span";
 
-const Paragraph: ForwardRefRenderFunction<ElementRef<"p">, Props> = (
-  { paragraph, ...props },
-  ref
-) => {
+const Paragraph: ForwardRefRenderFunction<
+  ElementRef<typeof motion.p>,
+  Props
+> = ({ paragraph, ...props }, ref) => {
   const characters = useMemo(() => paragraph.split(""), [paragraph]);
+
   return (
-    <motion.p ref={ref} {...props}>
+    <Motion
+      element="p"
+      ref={ref}
+      transition={{ staggerChildren: 1 }}
+      {...props}
+    >
       {characters.map((character, index) =>
         character === " " ? (
           <span key={index}>{character}</span>
         ) : (
-          <Span key={index} index={index} character={character} />
+          <Span key={index} character={character} />
         )
       )}
-    </motion.p>
+    </Motion>
   );
 };
 

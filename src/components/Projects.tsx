@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaExternalLinkAlt } from "react-icons/fa";
-import { motion } from "~/lib";
+import { FadeLeft, FadeRight, Paragraph } from "~/motion";
 import { SECTIONS } from "~/constant";
 
 const PROJECT: Omit<ProjectProps, "index">[] = [
@@ -29,7 +29,7 @@ function Project({ index, image, title, description, link }: ProjectProps) {
       } md:gap-20 gap-5 w-full items-center`}
     >
       {index % 2 !== 0 ? (
-        <motion.FadeLeft className="flex-1 w-full">
+        <FadeLeft className="flex-1 w-full" viewport={{ once: true }}>
           <Image
             src={image}
             alt={title}
@@ -37,9 +37,9 @@ function Project({ index, image, title, description, link }: ProjectProps) {
             height={720}
             className="object-cover h-96 rounded-xl"
           />
-        </motion.FadeLeft>
+        </FadeLeft>
       ) : (
-        <motion.FadeRight className="flex-1 w-full">
+        <FadeRight className="flex-1 w-full" viewport={{ once: true }}>
           <Image
             src={image}
             alt={title}
@@ -47,7 +47,7 @@ function Project({ index, image, title, description, link }: ProjectProps) {
             height={720}
             className="object-cover h-96 rounded-xl"
           />
-        </motion.FadeRight>
+        </FadeRight>
       )}
 
       <div className="flex-1 flex flex-col gap-7">
@@ -55,9 +55,10 @@ function Project({ index, image, title, description, link }: ProjectProps) {
           {index > 9 ? index : `0${index}`}
         </h1>
         <h1 className="text-white text-[32px] font-bold leading-10">{title}</h1>
-        <motion.Paragraph
+        <Paragraph
           className="text-zinc-500 leading-normal tracking-tight"
           paragraph={description}
+          viewport={{ once: true }}
         />
         <Link target="_blank" href={link}>
           <FaExternalLinkAlt color="#fff" size={20} />

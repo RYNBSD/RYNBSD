@@ -1,8 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { memo, type FC } from "react";
 import PropTypes from "prop-types";
+import { Motion } from "~/lib";
 
 const variants = {
   hidden: {
@@ -10,38 +11,32 @@ const variants = {
   },
   visible: {
     opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
   },
 } satisfies Variants;
 
-const Span: FC<Props> = ({ character, index }) => {
+const Span: FC<Props> = ({ character }) => {
   return (
-    <motion.span
-      variants={{
-        ...variants,
-        visible: {
-          ...variants.visible,
-          transition: { ...variants.visible.transition, delay: index * 0.025 },
-        },
+    <Motion
+      element="span"
+      viewport={{ once: true }}
+      variants={variants}
+      transition={{
+        duration: 1,
       }}
       initial="hidden"
       whileInView="visible"
     >
       {character}
-    </motion.span>
+    </Motion>
   );
 };
 
 Span.propTypes = {
   character: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 type Props = {
   character: string;
-  index: number;
 };
 
 export default memo(Span);

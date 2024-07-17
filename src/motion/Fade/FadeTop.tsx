@@ -8,9 +8,9 @@ import type {
 } from "react";
 import { forwardRef, useMemo } from "react";
 import { motion, type Variants } from "framer-motion";
-import Fade from "./Fade";
+import Fade from ".";
 
-const FadeBottom: ForwardRefRenderFunction<ElementRef<typeof motion.div>, Props> = (
+const FadeTop: ForwardRefRenderFunction<ElementRef<typeof motion.div>, Props> = (
   { children, startY, duration, ...props },
   ref
 ) => {
@@ -18,11 +18,9 @@ const FadeBottom: ForwardRefRenderFunction<ElementRef<typeof motion.div>, Props>
     () =>
       ({
         hidden: {
-          opacity: 0,
-          y: startY ?? 50,
+          y: startY ?? -50,
         },
         visible: {
-          opacity: 1,
           y: 0,
           transition: {
             duration,
@@ -54,4 +52,4 @@ type Props = {
   "variants" | "initial" | "whileInView" | "animate"
 >;
 
-export default forwardRef(FadeBottom);
+export default forwardRef(FadeTop);
