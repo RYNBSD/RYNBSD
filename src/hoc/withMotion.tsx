@@ -15,14 +15,14 @@ export default function withMotion<
     ComponentProps<MotionElement<M>>
   >;
 
-  return function MotionComponent(fcProps: P) {
+  return function MotionComponent(componentProps: P) {
     const reduceMotion = useReducedMotion();
 
     return reduceMotion ? (
-      <Component {...fcProps} />
+      <Component {...componentProps} />
     ) : (
       <Element {...motionProps}>
-        <Component {...fcProps} />
+        <Component {...componentProps} />
       </Element>
     );
   };

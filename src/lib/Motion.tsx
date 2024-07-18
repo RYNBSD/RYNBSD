@@ -16,7 +16,12 @@ export default function Motion<M extends MotionElements>({
   const Element = motion[element];
 
   return shouldReduceMotion ? (
-    children
+    children ? (
+      children
+    ) : (
+      // @ts-ignore
+      <Element {...props} />
+    )
   ) : (
     // @ts-ignore
     <Element {...props}>{children}</Element>
@@ -25,5 +30,5 @@ export default function Motion<M extends MotionElements>({
 
 type Props<M extends MotionElements> = {
   element: M;
-  children: ReactNode;
+  children?: ReactNode;
 };
