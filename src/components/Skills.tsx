@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SECTIONS } from "~/constant";
 import { Atropos } from "~/lib";
-import { Fade } from "~/motion"
+import { Fade } from "~/motion";
 
 const SKILL: SkillProps[] = [
   { image: "/git.webp", name: "Git" },
@@ -15,6 +15,10 @@ const SKILL: SkillProps[] = [
   { image: "/express-js.webp", name: "ExpressJS" },
   { image: "/postgresql.webp", name: "PostgreSQL" },
   { image: "/jest.webp", name: "Jest" },
+  { image: "/docker.webp", name: "Docker" },
+  { image: "/nginx.webp", name: "Nginx" },
+  { image: "/framer-motion.webp", name: "Framer Motion" },
+  { image: "/three-js.webp", name: "ThreeJS" },
 ];
 
 function Skill({ image, name }: SkillProps) {
@@ -28,6 +32,7 @@ function Skill({ image, name }: SkillProps) {
             width={1280}
             height={720}
             className="object-contain w-14 h-14"
+            loading="lazy"
             data-atropos-offset="5"
           />
           <h2 className="text-center text-xl font-bold leading-normal capitalize">

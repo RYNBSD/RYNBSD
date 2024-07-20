@@ -35,6 +35,7 @@ function Project({ index, image, title, description, link }: ProjectProps) {
             alt={title}
             width={1280}
             height={720}
+            loading="lazy"
             className="object-cover h-96 rounded-xl"
           />
         </FadeLeft>
@@ -45,6 +46,7 @@ function Project({ index, image, title, description, link }: ProjectProps) {
             alt={title}
             width={1280}
             height={720}
+            loading="lazy"
             className="object-cover h-96 rounded-xl"
           />
         </FadeRight>

@@ -39,6 +39,7 @@ function Experience({
             alt={title}
             width={1280}
             height={720}
+            loading="lazy"
             className="object-contain w-8 h-8"
           />
           <h2 className="text-white text-2xl font-semibold leading-7">

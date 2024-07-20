@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, ReactNode } from "react";
+import { createElement } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 type Motion = typeof motion;
@@ -11,24 +12,22 @@ export default function Motion<M extends MotionElements>({
   children,
   element,
   ...props
-}: Props<M> & ComponentProps<MotionElement<M>>) {
+}: Props<M>) {
   const shouldReduceMotion = useReducedMotion();
-  const Element = motion[element];
+  const MotionElement = motion[element];
 
   return shouldReduceMotion ? (
-    children ? (
-      children
-    ) : (
-      // @ts-ignore
-      <Element {...props} />
-    )
+    createElement(element, props, children)
+  ) : children ? (
+    // @ts-ignore
+    <MotionElement {...props}>{children}</MotionElement>
   ) : (
     // @ts-ignore
-    <Element {...props}>{children}</Element>
+    <MotionElement {...props} />
   );
 }
 
 type Props<M extends MotionElements> = {
   element: M;
   children?: ReactNode;
-};
+} & ComponentProps<MotionElement<M>>;
